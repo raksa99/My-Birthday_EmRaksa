@@ -1,0 +1,25 @@
+// Theme Colors
+$midnight-bg: #0b0914;
+$midnight-card: rgba(255, 255, 255, 0.03);
+$midnight-border: rgba(255, 255, 255, 0.08);
+
+$neon-pink: #ff007f;
+$neon-cyan: #00f0ff;
+$neon-violet: #8a2be2;
+$neon-yellow: #ffee00;
+
+// Gradients
+$gold-gradient: linear-gradient(135deg, #ffe066 0%, #f5af19 100%);
+$pink-gradient: linear-gradient(135deg, #ff007f 0%, #7928ca 100%);
+$cyan-gradient: linear-gradient(135deg, #00f0ff 0%, #0070f3 100%);
+$neon-gradient: linear-gradient(135deg, #ff007f 0%, #8a2be2 50%, #00f0ff 100%);
+
+// Box Shadows (Neon Glows)
+$glow-pink-shadow: 0 0 15px rgba(255, 0, 127, 0.5), 0 0 30px rgba(255, 0, 127, 0.2);
+$glow-cyan-shadow: 0 0 15px rgba(0, 240, 255, 0.5), 0 0 30px rgba(0, 240, 255, 0.2);
+$glow-violet-shadow: 0 0 15px rgba(138, 43, 226, 0.5), 0 0 30px rgba(138, 43, 226, 0.2);
+
+// Card styling
+$glass-bg: rgba(255, 255, 255, 0.03);
+$glass-border: rgba(255, 255, 255, 0.06);
+$glass-backdrop-blur: blur(20px);

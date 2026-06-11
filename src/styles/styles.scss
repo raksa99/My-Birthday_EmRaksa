@@ -1,0 +1,124 @@
+@use "./variables" as *;
+@config "../../tailwind.config.js";
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: $midnight-bg;
+  color: #f3f4f6;
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: $glass-bg;
+  border: 1px solid $glass-border;
+  backdrop-filter: $glass-backdrop-blur;
+  -webkit-backdrop-filter: $glass-backdrop-blur;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px);
+}
+
+/* Neon Glows */
+.neon-glow-pink {
+  box-shadow: $glow-pink-shadow;
+  border-color: rgba($neon-pink, 0.4);
+}
+
+.neon-glow-cyan {
+  box-shadow: $glow-cyan-shadow;
+  border-color: rgba($neon-cyan, 0.4);
+}
+
+.neon-glow-violet {
+  box-shadow: $glow-violet-shadow;
+  border-color: rgba($neon-violet, 0.4);
+}
+
+/* Custom Text Gradients */
+.text-gradient-gold {
+  background: $gold-gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-pink {
+  background: $pink-gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-cyan {
+  background: $cyan-gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-neon {
+  background: $neon-gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom floating and confetti utility animations */
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.animate-heart-beat {
+  animation: heartBeat 1.5s ease-in-out infinite;
+}
+
+/* Audio wave animation */
+.audio-bar {
+  display: inline-block;
+  width: 3px;
+  height: 2px;
+  background-color: $neon-cyan;
+  margin: 0 1px;
+  animation: bounce 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes bounce {
+  10% { height: 4px; }
+  50% { height: 18px; }
+  100% { height: 6px; }
+}
+
+.audio-bar:nth-child(2) { animation-delay: 0.1s; }
+.audio-bar:nth-child(3) { animation-delay: 0.2s; }
+.audio-bar:nth-child(4) { animation-delay: 0.3s; }
+.audio-bar:nth-child(5) { animation-delay: 0.4s; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: $midnight-bg;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

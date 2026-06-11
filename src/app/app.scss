@@ -1,0 +1,25 @@
+.floating-item {
+  position: fixed;
+  bottom: -80px;
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.25;
+  }
+  90% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(360deg) translateX(50px);
+    opacity: 0;
+  }
+}
