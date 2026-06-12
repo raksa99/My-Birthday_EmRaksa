@@ -134,8 +134,71 @@ app.post('/api/wishes', (req, res) => {
   // Send telegram notification in background
   sendTelegramNotification(newWish.sender, newWish.message);
 
+  // Commit updated wishes to GitHub repository in background
+  commitToGitHub(wishes);
+
   res.status(201).json(newWish);
 });
+
+// Helper: Commit wishes.json to GitHub repository to persist database
+const commitToGitHub = async (wishes) => {
+  const token = process.env.GITHUB_TOKEN;
+  const owner = 'raksa99';
+  const repo = 'My-Birthday_EmRaksa';
+  const path = 'server/wishes.json';
+
+  if (!token || token === 'your_github_token_here') {
+    console.log('GITHUB_TOKEN not configured. Skipping GitHub commit.');
+    return;
+  }
+
+  try {
+    const fileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+    
+    // 1. Get the current file SHA (required for updating)
+    let sha = null;
+    const getRes = await fetch(fileUrl, {
+      headers: {
+        'Authorization': `token ${token}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'User-Agent': 'Node-Fetch'
+      }
+    });
+
+    if (getRes.ok) {
+      const fileData = await getRes.json();
+      sha = fileData.sha;
+    } else if (getRes.status !== 404) {
+      console.error('Error fetching file SHA from GitHub:', await getRes.text());
+      return;
+    }
+
+    // 2. Commit the updated content (using [skip ci] to prevent Render redeployment loops)
+    const contentBase64 = Buffer.from(JSON.stringify(wishes, null, 2)).toString('base64');
+    const putRes = await fetch(fileUrl, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${token}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json',
+        'User-Agent': 'Node-Fetch'
+      },
+      body: JSON.stringify({
+        message: 'db: update wishes.json [skip ci]',
+        content: contentBase64,
+        sha: sha || undefined
+      })
+    });
+
+    if (!putRes.ok) {
+      console.error('Failed to commit wishes.json to GitHub:', await putRes.text());
+    } else {
+      console.log('Successfully committed wishes.json to GitHub repository.');
+    }
+  } catch (err) {
+    console.error('Error committing wishes.json to GitHub:', err);
+  }
+};
 
 // Start Server
 app.listen(PORT, () => {
