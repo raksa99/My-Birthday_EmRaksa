@@ -22,7 +22,15 @@ export class BirthdayService {
   public readonly allWishes = this.wishes.asReadonly();
 
   private http = inject(HttpClient);
-  private readonly API_URL = 'https://my-birthday-emraksa.onrender.com/api/wishes';
+  private get apiUrl(): string {
+    if (typeof window !== 'undefined') {
+      const hostname = window.location.hostname;
+      if (hostname === 'localhost' || hostname === '127.0.0.1') {
+        return 'http://localhost:3000/api/wishes';
+      }
+    }
+    return 'https://my-birthday-emraksa.onrender.com/api/wishes';
+  }
 
   // Audio State
   private audio: HTMLAudioElement | null = null;
@@ -82,7 +90,7 @@ export class BirthdayService {
 
   // Wishes Operations
   private loadWishes(): void {
-    this.http.get<Wish[]>(this.API_URL).subscribe({
+    this.http.get<Wish[]>(this.apiUrl).subscribe({
       next: (data) => {
         this.wishes.set(data);
       },
@@ -112,7 +120,7 @@ export class BirthdayService {
   }
 
   public addWish(sender: string, message: string): void {
-    this.http.post<Wish>(this.API_URL, { sender, message }).subscribe({
+    this.http.post<Wish>(this.apiUrl, { sender, message }).subscribe({
       next: (newWish) => {
         const updated = [newWish, ...this.wishes()];
         this.wishes.set(updated);
