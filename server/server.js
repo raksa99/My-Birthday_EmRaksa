@@ -64,6 +64,15 @@ const saveWishes = (wishes) => {
   }
 };
 
+// Helper: Escape HTML characters for Telegram HTML parse mode
+const escapeHtml = (text) => {
+  if (!text) return '';
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+};
+
 // Helper: Send telegram notification
 const sendTelegramNotification = async (sender, message) => {
   const token = process.env.TELEGRAM_BOT_TOKEN;
@@ -74,7 +83,9 @@ const sendTelegramNotification = async (sender, message) => {
     return;
   }
 
-  const text = `🎂 *New Wish for EM RAKSA!* 🎂\n\n👤 *From:* ${sender}\n💬 *Message:* "${message}"\n\n✨ Sent from Live Wish Board ✨`;
+  const escapedSender = escapeHtml(sender);
+  const escapedMessage = escapeHtml(message);
+  const text = `🎂 <b>New Wish for EM RAKSA!</b> 🎂\n\n👤 <b>From:</b> ${escapedSender}\n💬 <b>Message:</b> "${escapedMessage}"\n\n✨ Sent from Live Wish Board ✨`;
   const telegramUrl = `https://api.telegram.org/bot${token}/sendMessage`;
 
   try {
@@ -84,7 +95,7 @@ const sendTelegramNotification = async (sender, message) => {
       body: JSON.stringify({
         chat_id: chatId,
         text: text,
-        parse_mode: 'Markdown'
+        parse_mode: 'HTML'
       })
     });
     
