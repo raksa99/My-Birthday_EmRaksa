@@ -1,44 +1,30 @@
 [
   {
-    "id": "w-1781247062904",
-    "sender": "GitHub Persistence Test",
-    "message": "Checking auto-commit on POST",
-    "timestamp": "2026-06-12T06:51:02.904Z",
-    "avatarSeed": 52
+    "sender": "Test1",
+    "message": "dasdagsdagsd",
+    "timestamp": "2026-06-12T07:47:46.095Z",
+    "avatarSeed": 55,
+    "id": "6a2bb9a212d1e5358ff802d7"
   },
   {
-    "id": "w-1781242590256",
-    "sender": "Local Test",
-    "message": "Checking Telegram connection",
-    "timestamp": "2026-06-12T05:36:30.256Z",
-    "avatarSeed": 47
-  },
-  {
-    "id": "w-1781239254796",
-    "sender": "Bun Sengtri",
-    "message": "Whis u for everything",
-    "timestamp": "2026-06-12T04:40:54.796Z",
-    "avatarSeed": 5
-  },
-  {
-    "id": "w-1",
-    "sender": "Muny Rachna",
-    "message": "Happy Early Birthday, EM RAKSA! May this special milestone bring you endless joy, peace, and success in everything you do. Stay awesome and keep inspiring us! ✨🎂",
-    "timestamp": "2026-06-11T12:00:00.000Z",
-    "avatarSeed": 12
-  },
-  {
-    "id": "w-2",
-    "sender": "Ou Seavinh",
-    "message": "Wishing you an absolute blast on your upcoming birthday, bro! Let the countdown begin! Stay healthy, wealthy, and keep coding amazing things! 🚀💻",
-    "timestamp": "2026-06-11T14:30:00.000Z",
-    "avatarSeed": 42
-  },
-  {
-    "id": "w-3",
     "sender": "Em Chetra",
     "message": "Happy Birthday, EM RAKSA! Sending you warm wishes and positive vibes from afar. May all your dreams and aspirations come true in 2026! 🥳🎈🌟",
     "timestamp": "2026-06-11T16:45:00.000Z",
-    "avatarSeed": 88
+    "avatarSeed": 88,
+    "id": "6a2bb8c812d1e5358ff802d6"
+  },
+  {
+    "sender": "Ou Seavinh",
+    "message": "Wishing you an absolute blast on your upcoming birthday, bro! Let the countdown begin! Stay healthy, wealthy, and keep coding amazing things! 🚀💻",
+    "timestamp": "2026-06-11T14:30:00.000Z",
+    "avatarSeed": 42,
+    "id": "6a2bb8c812d1e5358ff802d5"
+  },
+  {
+    "sender": "Muny Rachna",
+    "message": "Happy Early Birthday, EM RAKSA! May this special milestone bring you endless joy, peace, and success in everything you do. Stay awesome and keep inspiring us! ✨🎂",
+    "timestamp": "2026-06-11T12:00:00.000Z",
+    "avatarSeed": 12,
+    "id": "6a2bb8c812d1e5358ff802d4"
   }
 ]
