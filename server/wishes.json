@@ -1,45 +1,24 @@
 [
   {
-    "id": "w-1781246562288",
-    "sender": "Ktri",
-    "message": "sfhsjfsjfsjfd",
-    "timestamp": "2026-06-12T06:42:42.288Z",
-    "avatarSeed": 16
+    "id": "w-1781247062904",
+    "sender": "GitHub Persistence Test",
+    "message": "Checking auto-commit on POST",
+    "timestamp": "2026-06-12T06:51:02.904Z",
+    "avatarSeed": 52
   },
   {
-    "id": "w-1781244440864",
-    "sender": "Em Bopha",
-    "message": "Wishing u get a good job",
-    "timestamp": "2026-06-12T06:07:20.864Z",
-    "avatarSeed": 29
+    "id": "w-1781242590256",
+    "sender": "Local Test",
+    "message": "Checking Telegram connection",
+    "timestamp": "2026-06-12T05:36:30.256Z",
+    "avatarSeed": 47
   },
   {
-    "id": "w-1781243961458",
-    "sender": "Yorn Visal",
-    "message": "hello testtt",
-    "timestamp": "2026-06-12T05:59:21.458Z",
-    "avatarSeed": 35
-  },
-  {
-    "id": "w-1781243180997",
-    "sender": "Vat Phirun",
-    "message": "a franco",
-    "timestamp": "2026-06-12T05:46:20.997Z",
-    "avatarSeed": 38
-  },
-  {
-    "id": "w-1781242756566",
+    "id": "w-1781239254796",
     "sender": "Bun Sengtri",
-    "message": "hii testtt",
-    "timestamp": "2026-06-12T05:39:16.566Z",
-    "avatarSeed": 87
-  },
-  {
-    "id": "w-1781242521069",
-    "sender": "AI Assistant",
-    "message": "Happy Birthday EM RAKSA! Your live wishes board and Telegram integration are working perfectly! 🚀🎉",
-    "timestamp": "2026-06-12T05:35:21.069Z",
-    "avatarSeed": 21
+    "message": "Whis u for everything",
+    "timestamp": "2026-06-12T04:40:54.796Z",
+    "avatarSeed": 5
   },
   {
     "id": "w-1",
