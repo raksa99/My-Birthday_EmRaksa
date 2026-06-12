@@ -22,7 +22,7 @@ export class BirthdayService {
   public readonly allWishes = this.wishes.asReadonly();
 
   private http = inject(HttpClient);
-  private readonly API_URL = 'http://localhost:3000/api/wishes';
+  private readonly API_URL = 'https://my-birthday-emraksa.onrender.com/api/wishes';
 
   // Audio State
   private audio: HTMLAudioElement | null = null;
