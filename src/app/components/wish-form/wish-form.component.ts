@@ -150,7 +150,7 @@ export class WishFormComponent {
   submitWish(): void {
     if (this.sender.trim() && this.message.trim()) {
       this.birthdayService.addWish(this.sender.trim(), this.message.trim());
-      
+
       // Clear inputs
       this.sender = '';
       this.message = '';
@@ -164,19 +164,37 @@ export class WishFormComponent {
   onDeleteWish(id: string): void {
     Swal.fire({
       title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      text: "You want to delete this wishes!!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      background: "#0d0b18",
+      color: "#ffffff",
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
+      buttonsStyling: false,
+      customClass: {
+        popup: 'rounded-2xl border border-white/10 shadow-[0_0_40px_rgba(255,0,127,0.2)] font-sans p-8',
+        title: 'font-display font-bold text-2xl text-white pt-4 block',
+        htmlContainer: 'text-gray-400 text-sm pb-4 mt-2 block',
+        confirmButton: 'px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold rounded-xl shadow-[0_0_15px_rgba(255,0,127,0.2)] hover:shadow-[0_0_25px_rgba(255,0,127,0.4)] transition-all duration-300 border-0 outline-none mx-2 cursor-pointer',
+        cancelButton: 'px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 hover:text-white font-bold rounded-xl transition-all duration-300 mx-2 cursor-pointer'
+      }
     }).then((result) => {
       if (result.isConfirmed) {
         this.birthdayService.deleteWish(id);
         Swal.fire({
           title: "Deleted!",
           text: "Your wish has been deleted.",
-          icon: "success"
+          icon: "success",
+          background: "#0d0b18",
+          color: "#ffffff",
+          buttonsStyling: false,
+          customClass: {
+            popup: 'rounded-2xl border border-white/10 shadow-[0_0_40px_rgba(0,240,255,0.2)] font-sans p-8',
+            title: 'font-display font-bold text-2xl text-white pt-4 block',
+            htmlContainer: 'text-gray-400 text-sm pb-4 mt-2 block',
+            confirmButton: 'px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold rounded-xl shadow-[0_0_15px_rgba(0,240,255,0.2)] hover:shadow-[0_0_25px_rgba(0,240,255,0.4)] transition-all duration-300 border-0 outline-none cursor-pointer'
+          }
         });
       }
     });
@@ -205,11 +223,11 @@ export class WishFormComponent {
 
   formatTime(isoString: string): string {
     const date = new Date(isoString);
-    return date.toLocaleDateString(undefined, { 
-      month: 'short', 
-      day: 'numeric', 
-      hour: '2-digit', 
-      minute: '2-digit' 
+    return date.toLocaleDateString(undefined, {
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
     });
   }
 }
