@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BirthdayService } from '../../services/birthday.service';
 import confetti from 'canvas-confetti';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-wish-form',
@@ -161,9 +162,24 @@ export class WishFormComponent {
   }
 
   onDeleteWish(id: string): void {
-    if (confirm('Are you sure you want to delete this wish?')) {
-      this.birthdayService.deleteWish(id);
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.birthdayService.deleteWish(id);
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your wish has been deleted.",
+          icon: "success"
+        });
+      }
+    });
   }
 
   triggerConfetti(): void {
