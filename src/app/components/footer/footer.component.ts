@@ -28,6 +28,9 @@ import { Component } from '@angular/core';
           <a href="https://www.tiktok.com/@e.raksa77" target="_blank" rel="noopener" class="w-10 h-10 rounded-full glass-card border-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:border-pink-500/40 hover:shadow-[0_0_15px_rgba(255,0,127,0.3)] transition-all duration-300">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 448 512"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
           </a>
+          <a href="https://www.facebook.com/share/1D1SWxtakH/?mibextid=wwXIfr" target="_blank" rel="noopener" class="w-10 h-10 rounded-full glass-card border-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:border-blue-500/40 hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all duration-300">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+          </a>
         </div>
       </div>
     </footer>
