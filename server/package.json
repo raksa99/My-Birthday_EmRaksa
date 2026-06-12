@@ -4,7 +4,8 @@
   "description": "REST API backend for EM RAKSA birthday app wishes and Telegram bots integration",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "echo 'No build step required'"
   },
   "dependencies": {
     "cors": "^2.8.5",
