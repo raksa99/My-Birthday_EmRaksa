@@ -38,7 +38,7 @@ import Swal from 'sweetalert2';
                 name="name" 
                 [(ngModel)]="sender" 
                 required 
-                placeholder="e.g. Toch Chanam" 
+                placeholder="e.g. Em Raksa" 
                 class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-all duration-300">
             </div>
 
