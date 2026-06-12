@@ -1,0 +1,14 @@
+{
+  "name": "birthday-api",
+  "version": "1.0.0",
+  "description": "REST API backend for EM RAKSA birthday app wishes and Telegram bots integration",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}

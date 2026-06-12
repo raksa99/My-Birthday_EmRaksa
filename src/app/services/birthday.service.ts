@@ -1,6 +1,7 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, inject } from '@angular/core';
 import { Wish } from '../models/wish';
 import { Observable, timer, map, shareReplay } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 export interface TimeLeft {
   days: number;
@@ -19,6 +20,9 @@ export class BirthdayService {
   // Wishes State
   private wishes = signal<Wish[]>([]);
   public readonly allWishes = this.wishes.asReadonly();
+
+  private http = inject(HttpClient);
+  private readonly API_URL = 'http://localhost:3000/api/wishes';
 
   // Audio State
   private audio: HTMLAudioElement | null = null;
@@ -78,6 +82,18 @@ export class BirthdayService {
 
   // Wishes Operations
   private loadWishes(): void {
+    this.http.get<Wish[]>(this.API_URL).subscribe({
+      next: (data) => {
+        this.wishes.set(data);
+      },
+      error: (err) => {
+        console.warn('Backend server offline. Falling back to local wishes database.', err);
+        this.loadLocalWishes();
+      }
+    });
+  }
+
+  private loadLocalWishes(): void {
     if (typeof window !== 'undefined' && window.localStorage) {
       const stored = localStorage.getItem('birthday_wishes_v2');
       if (stored) {
@@ -96,10 +112,23 @@ export class BirthdayService {
   }
 
   public addWish(sender: string, message: string): void {
+    this.http.post<Wish>(this.API_URL, { sender, message }).subscribe({
+      next: (newWish) => {
+        const updated = [newWish, ...this.wishes()];
+        this.wishes.set(updated);
+      },
+      error: (err) => {
+        console.warn('Backend server offline. Saving wish locally.', err);
+        this.addLocalWish(sender, message);
+      }
+    });
+  }
+
+  private addLocalWish(sender: string, message: string): void {
     const newWish: Wish = {
       id: 'w-' + Date.now(),
-      sender,
-      message,
+      sender: sender.trim(),
+      message: message.trim(),
       timestamp: new Date().toISOString(),
       avatarSeed: Math.floor(Math.random() * 100)
     };

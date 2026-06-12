@@ -42,3 +42,9 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Server dependencies & database secrets
+server/node_modules/
+server/.env
+server/wishes.json
+
