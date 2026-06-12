@@ -75,10 +75,20 @@ import confetti from 'canvas-confetti';
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
             <div 
               *ngFor="let wish of wishes()" 
-              class="p-6 rounded-2xl glass-card border-white/5 relative flex flex-col justify-between space-y-4">
+              class="group p-6 rounded-2xl glass-card border-white/5 relative flex flex-col justify-between space-y-4">
               
               <!-- Quote Icon -->
               <span class="absolute top-4 right-6 text-white/5 text-6xl font-serif select-none pointer-events-none">“</span>
+
+              <!-- Delete Button (fades in on hover with hover effect) -->
+              <button 
+                (click)="onDeleteWish(wish.id)"
+                class="absolute top-4 right-4 z-20 text-gray-500 hover:text-red-500 hover:scale-110 active:scale-95 opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer"
+                title="Delete Wish">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+              </button>
 
               <!-- Content -->
               <p class="text-gray-300 text-sm leading-relaxed relative z-10">
@@ -147,6 +157,12 @@ export class WishFormComponent {
       // Pop sound and quick confetti burst
       this.birthdayService.playConfettiSound();
       this.triggerConfetti();
+    }
+  }
+
+  onDeleteWish(id: string): void {
+    if (confirm('Are you sure you want to delete this wish?')) {
+      this.birthdayService.deleteWish(id);
     }
   }
 

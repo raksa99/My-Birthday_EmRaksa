@@ -151,6 +151,30 @@ app.post('/api/wishes', (req, res) => {
   res.status(201).json(newWish);
 });
 
+// DELETE: Remove a wish by ID
+app.delete('/api/wishes/:id', (req, res) => {
+  const { id } = req.params;
+
+  let wishes = getWishes();
+  const wishIndex = wishes.findIndex(w => w.id === id);
+
+  if (wishIndex === -1) {
+    return res.status(404).json({ error: 'Wish not found.' });
+  }
+
+  const deletedWish = wishes.splice(wishIndex, 1)[0];
+  const success = saveWishes(wishes);
+
+  if (!success) {
+    return res.status(500).json({ error: 'Failed to delete wish from database.' });
+  }
+
+  // Commit updated wishes to GitHub repository in background
+  commitToGitHub(wishes);
+
+  res.json({ message: 'Wish deleted successfully.', wish: deletedWish });
+});
+
 // Helper: Commit wishes.json to GitHub repository to persist database
 const commitToGitHub = async (wishes) => {
   const token = process.env.GITHUB_TOKEN;

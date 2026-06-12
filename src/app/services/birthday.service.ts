@@ -132,6 +132,28 @@ export class BirthdayService {
     });
   }
 
+  public deleteWish(id: string): void {
+    this.http.delete<{ message: string, wish: Wish }>(`${this.apiUrl}/${id}`).subscribe({
+      next: () => {
+        const updated = this.wishes().filter(w => w.id !== id);
+        this.wishes.set(updated);
+      },
+      error: (err) => {
+        console.warn('Backend server offline. Deleting wish locally.', err);
+        this.deleteLocalWish(id);
+      }
+    });
+  }
+
+  private deleteLocalWish(id: string): void {
+    const updated = this.wishes().filter(w => w.id !== id);
+    this.wishes.set(updated);
+
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem('birthday_wishes_v2', JSON.stringify(updated));
+    }
+  }
+
   private addLocalWish(sender: string, message: string): void {
     const newWish: Wish = {
       id: 'w-' + Date.now(),
